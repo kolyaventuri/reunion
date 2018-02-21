@@ -20,4 +20,13 @@ class Activity
   def total_cost
     @price_per_participant * @participants.length
   end
+
+  def split_cost
+    @participants.map do |participant|
+      {
+        name: participant[:name],
+        amt_owed: @price_per_participant - participant[:amt_paid]
+      }
+    end
+  end
 end
