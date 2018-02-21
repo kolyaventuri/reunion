@@ -3,10 +3,12 @@
 # Defines an activity for the reunion
 class Activity
   attr_reader :name,
-              :participants
+              :participants,
+              :price_per_participant
 
-  def initialize(name)
+  def initialize(name, price)
     @name = name
+    @price_per_participant = price
     @participants = []
   end
 
@@ -16,8 +18,6 @@ class Activity
   end
 
   def total_cost
-    @participants.reduce(0) do |total, participant|
-      total + participant[:amt_paid]
-    end
+    @price_per_participant * @participants.length
   end
 end

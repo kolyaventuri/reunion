@@ -6,15 +6,16 @@ require './lib/activity'
 
 class ActivityTest < Minitest::Test
   def setup
-    @activity = Activity.new 'Hiking'
+    @activity = Activity.new 'Hiking', 11.0
   end
 
   def test_can_create_activity
     assert_instance_of Activity, @activity
   end
 
-  def test_can_have_name
+  def test_can_have_name_and_price
     assert_equal 'Hiking', @activity.name
+    assert_equal 11.0, @activity.price_per_participant
   end
 
   def test_can_add_participants
@@ -35,11 +36,18 @@ class ActivityTest < Minitest::Test
     participant = { name: 'Sue', amt_paid: 10.0 }
     @activity.add_participant(participant)
 
-    assert_equal 10.0, @activity.total_cost
-
     participant2 = { name: 'Bob', amt_paid: 12.5 }
     @activity.add_participant(participant2)
 
-    assert_equal 22.5, @activity.total_cost
+    assert_equal 22.0, @activity.total_cost
+  end
+
+  def test_can_calculate_split
+    participant = { name: 'Sue', amt_paid: 10.0 }
+    participant2 = { name: 'Bob', amt_paid: 12.5 }
+    @activity.add_participant(participant)
+    @activity.add_participant(participant2)
+
+
   end
 end
