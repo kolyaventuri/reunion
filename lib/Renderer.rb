@@ -12,6 +12,6 @@ class Renderer
 
   def render
     renderer = ERB.new TEMPLATE
-    renderer.result
+    renderer.result binding
   end
 end
