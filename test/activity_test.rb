@@ -55,7 +55,6 @@ class ActivityTest < Minitest::Test
     @activity.add_participant(participant)
     @activity.add_participant(participant2)
 
-
     expected = {
       'Sue' => 1.0,
       'Bob' => -1.5

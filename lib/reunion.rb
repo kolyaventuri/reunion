@@ -21,7 +21,19 @@ class Reunion
     end
   end
 
+  def merge_sum(costs)
+    return costs.first if costs.length == 1
+    sum = costs[0].merge(costs[1]) do |_key, first, second|
+      first + second
+    end
+
+    costs[1] = sum
+    costs.shift
+
+    merge_sum(costs)
+  end
+
   def split_cost
-    @activites.map(&:split_cost)
+    merge_sum @activities.map(&:split_cost)
   end
 end

@@ -36,10 +36,10 @@ class ReunionTest < Minitest::Test
   def test_can_calculate_split_per_person
     setup_reunion
 
-    expected = [
-      { name: 'Sue', amt_owed: -1.0 },
-      { name: 'Bob', amt_owed: 2.0 }
-    ]
+    expected = {
+      'Sue' => -1.0,
+      'Bob' => 2.0
+    }
 
     assert_equal expected, @reunion.split_cost
   end
