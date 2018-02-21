@@ -26,4 +26,24 @@ class ReunionTest < Minitest::Test
 
     assert_equal [activity, activity2], @reunion.activities
   end
+
+  def test_can_calculate_total_cost
+    setup_reunion
+
+    assert_equal 14.0, @reunion.total_cost
+  end
+
+  def setup_reunion
+    activity = Activity.new 'Frisbee', 5.0
+    activity2 = Activity.new 'Singalong', 2.0
+
+    activity.add_participant(name: 'Sue', amt_paid: 5.0)
+    activity.add_participant(name: 'Bob', amt_paid: 4.0)
+
+    activity2.add_participant(name: 'Sue', amt_paid: 3.0)
+    activity2.add_participant(name: 'Bob', amt_paid: 2.0)
+
+    @reunion.add_activity activity2
+    @reunion.add_activity activity
+  end
 end
