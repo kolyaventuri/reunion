@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <h1>Reunion at the <%= @reunion.location %></h1>
+    <hr />
+    <h3>Today's Activites:</h3>
+    <ul><% @reunion.activities.each do |activity| %>
+      <li><%= activity.name %> (Cost: $<%= format '%.2f', activity.price_per_participant %>)</li><% end %>
+    </ul>
+    <p>Total cost: $<%= format '%.2f', @reunion.total_cost %></p>
+    <hr />
+    <h3></h3>
+    <ul>
+      <% @reunion.cost_string.lines.each { |line| %><li><%= line.chomp %></li><% } %>
+    </ul>
+  </body>
+</html>
