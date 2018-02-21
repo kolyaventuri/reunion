@@ -20,4 +20,8 @@ class Reunion
       total + activity.total_cost
     end
   end
+
+  def split_cost
+    @activites.map(&:split_cost)
+  end
 end
