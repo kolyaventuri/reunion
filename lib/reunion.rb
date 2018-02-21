@@ -2,7 +2,9 @@
 
 # Defines a reunion, to be filled with activities
 class Reunion
-  def initialize(location)
+  attr_reader :location
 
+  def initialize(location)
+    @location = location
   end
 end
