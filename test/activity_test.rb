@@ -18,18 +18,24 @@ class ActivityTest < Minitest::Test
     assert_equal 11.0, @activity.price_per_participant
   end
 
-  def test_can_add_participants
-    assert_equal [], @activity.participants
+  def test_activity_starts_empty
+    expected = {}
+    assert_equal expected, @activity.participants
+  end
 
+  def test_can_add_participants
     participant = { name: 'Sue', amt_paid: 10.0 }
     assert_equal participant, @activity.add_participant(participant)
 
-    assert_equal [participant], @activity.participants
+    expected = { 'Sue' => 10.0 }
+    assert_equal expected, @activity.participants
 
     participant2 = { name: 'Bob', amt_paid: 12.0 }
     assert_equal participant2, @activity.add_participant(participant2)
 
-    assert_equal [participant, participant2], @activity.participants
+    expected = { 'Sue' => 10.0, 'Bob' => 12.0 }
+
+    assert_equal expected, @activity.participants
   end
 
   def test_can_evaluate_total_cost
@@ -48,10 +54,10 @@ class ActivityTest < Minitest::Test
     @activity.add_participant(participant)
     @activity.add_participant(participant2)
 
-    expected = [
-      { name: 'Sue', amt_owed: 1.0 },
-      { name: 'Bob', amt_owed: -1.5 }
-    ]
+    expected = {
+      'Sue' => 1.0,
+      'Bob' => -1.5
+    }
 
     assert_equal expected, @activity.split_cost
   end
