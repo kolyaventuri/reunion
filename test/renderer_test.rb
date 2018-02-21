@@ -2,15 +2,22 @@
 
 require_relative 'test_helper.rb'
 
-require './lib/Renderer.rb'
+require './lib/renderer'
+require './lib/reunion'
 
 class RendererTest < Minitest::Test
   def setup
-    @renderer = Renderer.new
+    @reunion = Reunion.new 'Beach'
+    @renderer = Renderer.new @reunion
   end
 
   def test_does_create_renderer
     assert_instance_of Renderer, @renderer
+  end
+
+  def test_does_render_erb
+    expected = File.read('./test/mock/expected.html')
+    assert_equal expected, @renderer.render
   end
 
   def setup_reunion
