@@ -36,4 +36,12 @@ class Reunion
   def split_cost
     merge_sum @activities.map(&:split_cost)
   end
+
+  def cost_string
+    split_cost.map do |name, owed|
+
+      price_string = format '%.2f', owed.abs
+      "#{name}: #{'-' if owed < 0}$#{price_string}"
+    end.join("\n")
+  end
 end
