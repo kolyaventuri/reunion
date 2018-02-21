@@ -19,12 +19,14 @@ class ActivityTest < Minitest::Test
   end
 
   def test_can_add_participants
-    assert_equal [], @activity.participants
+    expected = {}
+    assert_equal expected, @activity.participants
 
     participant = { name: 'Sue', amt_paid: 10.0 }
     assert_equal participant, @activity.add_participant(participant)
 
-    assert_equal [participant], @activity.participants
+    expected = { 'Sue' => 10.0 }
+    assert_equal expected, @activity.participants
 
     participant2 = { name: 'Bob', amt_paid: 12.0 }
     assert_equal participant2, @activity.add_participant(participant2)

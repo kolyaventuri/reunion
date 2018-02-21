@@ -9,11 +9,11 @@ class Activity
   def initialize(name, price)
     @name = name
     @price_per_participant = price
-    @participants = []
+    @participants = {}
   end
 
   def add_participant(participant)
-    @participants.push participant
+    @participants[participant[:name]] = participant[:amt_paid]
     participant
   end
 
@@ -22,11 +22,8 @@ class Activity
   end
 
   def split_cost
-    @participants.map do |participant|
-      {
-        name: participant[:name],
-        amt_owed: @price_per_participant - participant[:amt_paid]
-      }
+    @participants.merge(@participants) do |_name, paid|
+      @price_per_participant - paid
     end
   end
 end
