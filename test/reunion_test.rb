@@ -12,4 +12,8 @@ class ReunionTest < Minitest::Test
   def test_can_create_runion
     assert_instance_of Reunion, @reunion
   end
+
+  def test_has_location
+    assert_equal 'Beach', @reunion.location
+  end
 end
