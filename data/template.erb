@@ -10,7 +10,7 @@
     <hr />
     <h3></h3>
     <ul>
-      <li>Sue: -$1.00</li>
+      <% @reunion.cost_string.lines.each { |line| %><li><%= line.chomp %></li><% } %>
     </ul>
   </body>
 </html>
