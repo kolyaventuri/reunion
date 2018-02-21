@@ -13,6 +13,7 @@ class RendererTest < Minitest::Test
 
   def test_does_create_renderer
     assert_instance_of Renderer, @renderer
+    assert_equal @renderer.reunion, @reunion
   end
 
   def test_does_render_erb
