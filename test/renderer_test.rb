@@ -4,10 +4,12 @@ require_relative 'test_helper.rb'
 
 require './lib/renderer'
 require './lib/reunion'
+require './lib/activity'
 
 class RendererTest < Minitest::Test
   def setup
     @reunion = Reunion.new 'Beach'
+    setup_reunion
     @renderer = Renderer.new @reunion
   end
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'erb'
 
 # Takes ERB templates and renders HTML
@@ -12,6 +13,8 @@ class Renderer
 
   def render
     renderer = ERB.new TEMPLATE
-    renderer.result binding
+    out = renderer.result binding
+    puts out
+    out
   end
 end

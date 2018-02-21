@@ -3,8 +3,8 @@
     <h1>Reunion at the <%= @reunion.location %></h1>
     <hr />
     <h3>Today's Activites:</h3>
-    <ul>
-      <li></li>
+    <ul><% @reunion.activities.each do |activity| %>
+        <li><%= activity.name %> (Cost: $<%= format '%.2f', activity.price_per_participant %>)</li><% end %>
     </ul>
     <p>Total cost per person: </p>
     <hr />
