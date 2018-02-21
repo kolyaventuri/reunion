@@ -4,9 +4,9 @@
     <hr />
     <h3>Today's Activites:</h3>
     <ul><% @reunion.activities.each do |activity| %>
-        <li><%= activity.name %> (Cost: $<%= format '%.2f', activity.price_per_participant %>)</li><% end %>
+      <li><%= activity.name %> (Cost: $<%= format '%.2f', activity.price_per_participant %>)</li><% end %>
     </ul>
-    <p>Total cost: $<%=  %></p>
+    <p>Total cost: $<%= format '%.2f', @reunion.total_cost %></p>
     <hr />
     <h3></h3>
     <ul>
