@@ -24,6 +24,6 @@ class ReunionTest < Minitest::Test
     activity2 = Activity.new 'Singalong', 2.0
     assert_equal activity2, @reunion.add_activity(activity2)
 
-    assert_equal [activity, activity2], @reunion.activites
+    assert_equal [activity, activity2], @reunion.activities
   end
 end
