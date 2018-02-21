@@ -44,6 +44,13 @@ class ReunionTest < Minitest::Test
     assert_equal expected, @reunion.split_cost
   end
 
+  def test_can_print_total_owed
+    setup_reunion
+    expected = "Sue: -$1.00\nBob: $2.00"
+
+    assert_equal expected, @reunion.cost_string
+  end
+
   def setup_reunion
     activity = Activity.new 'Frisbee', 5.0
     activity2 = Activity.new 'Singalong', 2.0
