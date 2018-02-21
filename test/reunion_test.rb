@@ -10,6 +10,6 @@ class ReunionTest < Minitest::Test
   end
 
   def test_can_create_runion
-    assert_instance_of Runion, reunion
+    assert_instance_of Reunion, @reunion
   end
 end
