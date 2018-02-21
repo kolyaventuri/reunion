@@ -48,6 +48,11 @@ class ActivityTest < Minitest::Test
     @activity.add_participant(participant)
     @activity.add_participant(participant2)
 
+    expected = [
+      { name: 'Sue', amt_owed: 1.0 },
+      { name: 'Bob', amt_owed: -1.5 }
+    ]
 
+    assert_equal expected, @activity.split_cost
   end
 end
