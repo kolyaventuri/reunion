@@ -12,4 +12,10 @@ class Activity
     @participants.push participant
     participant
   end
+
+  def total_cost
+    @participants.reduce(0) do |total, participant|
+      total + participant[:amt_paid]
+    end
+  end
 end
